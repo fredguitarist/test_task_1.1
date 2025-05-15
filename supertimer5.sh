@@ -1,6 +1,6 @@
 source ./config.env  # Должна быть переменная PROCESS_NAME
 
-iteration_duration=3
+iteration_duration=60
 
 while true; do
     echo "Запускаю операцию с ограничением по времени..."
@@ -12,6 +12,7 @@ while true; do
         echo "Проверяю процесс: $1"
         if pgrep "$1" > /dev/null; then
             echo "$(date "+%Y-%m-%d %H:%M:%S") - $1 работает" >> log.txt
+            ./check_url.sh
         else
             echo "$(date "+%Y-%m-%d %H:%M:%S") - $1 не работает" >> log.txt
         fi
@@ -32,3 +33,4 @@ while true; do
         echo "Итерация заняла $elapsed секунд — спать не будем."
     fi
 done
+
