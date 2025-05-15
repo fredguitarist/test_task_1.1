@@ -1,0 +1,6 @@
+#!/bin/bash
+while true; do
+  echo "это просто тестовый процесс"
+  echo $$ > ./test.pid    # Записываем PID текущего процесса в файл
+  sleep 5
+done

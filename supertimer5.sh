@@ -12,7 +12,9 @@ while true; do
         echo "Проверяю процесс: $1"
         if pgrep "$1" > /dev/null; then
             echo "$(date "+%Y-%m-%d %H:%M:%S") - $1 работает" >> log.txt
+            ./check_restart.sh
             ./check_url.sh
+            
         else
             echo "$(date "+%Y-%m-%d %H:%M:%S") - $1 не работает" >> log.txt
         fi
